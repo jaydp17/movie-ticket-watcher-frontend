@@ -2,8 +2,12 @@ import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import { Query } from 'react-apollo';
 
-const GET_CINEMAS = gql`
-  query Cinemas($regionCode: String!) {
+const GET_MOVIES_AND_CINEMAS = gql`
+  query MoviesAndCinemas($regionCode: String!) {
+    movies(regionCode: $regionCode) {
+      code
+      name
+    }
     cinemas(regionCode: $regionCode) {
       code
       name
@@ -26,21 +30,37 @@ function Form({ regions }) {
         </select>
       </fieldset>
 
-      <Query query={GET_CINEMAS} variables={{ regionCode }}>
+      <Query query={GET_MOVIES_AND_CINEMAS} variables={{ regionCode }}>
         {({ loading, error, data }) => (
-          <fieldset>
-            <legend>Cinemas</legend>
-            {loading && <p>loading...</p>}
-            {!loading && data && (
-              <select name="cinemaCode">
-                {data.cinemas.map(c => (
-                  <option key={c.code} value={c.code}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-            )}
-          </fieldset>
+          <>
+            <fieldset>
+              <legend>Movies</legend>
+              {loading && <p>loading...</p>}
+              {!loading && data && (
+                <select name="cinemaCode">
+                  {data.movies.map(c => (
+                    <option key={c.code} value={c.code}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </fieldset>
+
+            <fieldset>
+              <legend>Cinemas</legend>
+              {loading && <p>loading...</p>}
+              {!loading && data && (
+                <select name="cinemaCode">
+                  {data.cinemas.map(c => (
+                    <option key={c.code} value={c.code}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </fieldset>
+          </>
         )}
       </Query>
     </form>
