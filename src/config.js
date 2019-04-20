@@ -4,8 +4,8 @@
 
 
 const graphqlServerConfig = {
-  endpoint: process.env.SERVER_GRAPHQL_ENDPOINT || 'http://localhost:62222/graphql',
-  apiKey: process.env.SERVER_API_KEY || 'abc',
+  endpoint: process.env.GATSBY_SERVER_GRAPHQL_ENDPOINT || 'http://localhost:62222/graphql',
+  apiKey: process.env.GATSBY_SERVER_API_KEY || 'abc',
   apiKeyHeaderName: 'x-api-key',
 };
 
