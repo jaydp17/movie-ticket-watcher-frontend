@@ -15,10 +15,17 @@ const GET_MOVIES_AND_CINEMAS = gql`
   }
 `;
 
-function Form({ regions }) {
+function Form({ regions, subscribeMovie }) {
   const [regionCode, setRegionCode] = useState('BANG');
+  const [movieCode, setMovieCode] = useState();
+  const [cinemaCode, setCinemaCode] = useState();
   return (
-    <form>
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+        subscribeMovie({ regionCode, movieCode, cinemaCode });
+      }}
+    >
       <fieldset>
         <legend>Region Code</legend>
         <select name="regionCode" value={regionCode} onChange={e => setRegionCode(e.target.value)}>
@@ -37,7 +44,11 @@ function Form({ regions }) {
               <legend>Movies</legend>
               {loading && <p>loading...</p>}
               {!loading && data && (
-                <select name="cinemaCode">
+                <select
+                  name="movieCode"
+                  value={movieCode}
+                  onChange={e => setMovieCode(e.target.value)}
+                >
                   {data.movies.map(c => (
                     <option key={c.code} value={c.code}>
                       {c.name}
@@ -51,7 +62,11 @@ function Form({ regions }) {
               <legend>Cinemas</legend>
               {loading && <p>loading...</p>}
               {!loading && data && (
-                <select name="cinemaCode">
+                <select
+                  name="cinemaCode"
+                  value={cinemaCode}
+                  onChange={e => setCinemaCode(e.target.value)}
+                >
                   {data.cinemas.map(c => (
                     <option key={c.code} value={c.code}>
                       {c.name}
@@ -60,6 +75,10 @@ function Form({ regions }) {
                 </select>
               )}
             </fieldset>
+
+            <button disabled={!regionCode || !movieCode || !cinemaCode} type="submit">
+              Submit
+            </button>
           </>
         )}
       </Query>
