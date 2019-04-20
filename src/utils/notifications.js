@@ -18,7 +18,7 @@ export function requestPermission() {
 }
 
 const vapidPublicKey =
-  'BCsVNqXbivH1MD3Sa2rRWqTyr-cmPG0cHfWni9cpY5lwDaVH41e5Om01yf9fsQVXVq8Y4Xe2nvwmDB6CWJsI8vY';
+  'BOGGgGGFu6Vtq_w_2JRqFak_3-JjtdG02lco32frBCMjat7Vg-SkGjJz5EeM3KMTxE5lC9HzYOxEu_3o4zC6xYs';
 
 /**
  * @returns {Promise<PushSubscription>}
