@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import { Mutation, Query } from 'react-apollo';
-import { getPushSubscription } from '../../utils/notifications';
+import { getPushSubscription, requestPermission } from '../../utils/notifications';
 
 const GET_MOVIES_AND_CINEMAS = gql`
   query MoviesAndCinemas($regionCode: String!) {
@@ -17,11 +17,16 @@ const GET_MOVIES_AND_CINEMAS = gql`
 `;
 
 const SUBSCRIBE_TO_MOVIE = gql`
-  mutation SubscribeToMovie($regionCode: String!, $movieCode: String!, $cinemaCode: String!, $subscription: PushSubscriptionInput!) {
+  mutation SubscribeToMovie(
+    $regionCode: String!
+    $movieCode: String!
+    $cinemaCode: String!
+    $subscription: PushSubscriptionInput!
+  ) {
     subscribeMovieAtCinema(
-      regionCode: $regionCode,
-      movieCode: $movieCode,
-      cinemaCode: $cinemaCode,
+      regionCode: $regionCode
+      movieCode: $movieCode
+      cinemaCode: $cinemaCode
       subscription: $subscription
     )
   }
@@ -37,6 +42,8 @@ function Form({ regions, subscribeMovie }) {
         <form
           onSubmit={async e => {
             e.preventDefault();
+            const permission = await requestPermission();
+            if (!permission.granted) return alert('allow notifications');
             const subscription = await getPushSubscription();
             subscribeMovieAtCinema({
               variables: { regionCode, movieCode, cinemaCode, subscription },
