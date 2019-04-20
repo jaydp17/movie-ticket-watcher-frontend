@@ -1,3 +1,5 @@
+const { graphqlServerConfig } = require('./src/config');
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -34,11 +36,11 @@ module.exports = {
         typeName: 'API',
         fieldName: 'api',
         // Url to query from
-        url: process.env.SERVER_GRAPHQL_ENDPOINT || 'http://localhost:62222/graphql',
+        url: graphqlServerConfig.endpoint,
         // HTTP headers
         headers: {
           // Learn about environment variables: https://gatsby.dev/env-vars
-          'x-api-key': process.env.SERVER_API_KEY || 'abc',
+          [graphqlServerConfig.apiKeyHeaderName]: graphqlServerConfig.apiKey,
         },
       },
     },

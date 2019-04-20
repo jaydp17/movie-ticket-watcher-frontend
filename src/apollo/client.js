@@ -1,9 +1,11 @@
 import ApolloClient from 'apollo-boost';
 import fetch from 'isomorphic-fetch';
+import { graphqlServerConfig } from '../config';
 
+const { endpoint, apiKeyHeaderName, apiKey } = graphqlServerConfig;
 const client = new ApolloClient({
-  uri: 'http://localhost:62222/graphql',
-  headers: { 'x-api-key': 'abc' },
+  uri: endpoint,
+  headers: { [apiKeyHeaderName]: apiKey },
   fetch,
 });
 
