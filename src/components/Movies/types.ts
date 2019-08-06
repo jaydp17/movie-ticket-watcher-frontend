@@ -6,3 +6,9 @@ export interface IMovie {
   language: string;
   imageURL: string;
 }
+
+export interface IMovieGroup {
+  id: string;
+  title: string;
+  imageURL: string;
+}

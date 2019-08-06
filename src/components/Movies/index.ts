@@ -1,1 +1,1 @@
-export { default } from './MovieSelector';
+export { default } from './MovieGroupSelector';
