@@ -1,9 +1,11 @@
 {
   "name": "bms-notify-frontend",
-  "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
   "author": "Jaydeep Solanki <jaydp17@gmail.com> (https://jaydp.com)",
+  "bugs": {
+    "url": "https://github.com/jaydp17/bms-notify-frontend/issues"
+  },
   "dependencies": {
     "gatsby": "^2.13.51",
     "gatsby-image": "^2.2.8",
@@ -27,24 +29,22 @@
     "prettier": "^1.18.2",
     "typescript": "^3.5.3"
   },
+  "homepage": "https://github.com/jaydp17/bms-notify-frontend#readme",
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaydp17/bms-notify-frontend.git"
   },
-  "bugs": {
-    "url": "https://github.com/jaydp17/bms-notify-frontend/issues"
-  },
-  "homepage": "https://github.com/jaydp17/bms-notify-frontend#readme"
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "serve": "gatsby serve",
+    "start": "npm run develop",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  }
 }
