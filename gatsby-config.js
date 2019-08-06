@@ -1,5 +1,3 @@
-const { graphqlServerConfig } = require('./src/config');
-
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -20,29 +18,17 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `BMS Notifier`,
-        short_name: `BMS Notifier`,
+        name: `Movie ticket watcher`,
+        short_name: `Movie ticket watcher`,
         start_url: `/`,
         background_color: `#663399`,
-
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: 'gatsby-source-graphql',
-      options: {
-        typeName: 'API',
-        fieldName: 'api',
-        // Url to query from
-        url: graphqlServerConfig.endpoint,
-        // HTTP headers
-        headers: {
-          // Learn about environment variables: https://gatsby.dev/env-vars
-          [graphqlServerConfig.apiKeyHeaderName]: graphqlServerConfig.apiKey,
-        },
-      },
-    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
-};
+}
