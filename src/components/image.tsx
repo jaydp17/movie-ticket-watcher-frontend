@@ -26,7 +26,6 @@ const Image = () => {
     }
   `);
 
-
   return <GatsbyImg fluid={data.placeholderImage.childImageSharp.fluid} />;
 };
 
