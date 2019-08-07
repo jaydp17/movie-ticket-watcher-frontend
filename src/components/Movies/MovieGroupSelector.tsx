@@ -9,7 +9,7 @@ interface Props {
 }
 function MovieGroupSelector({ cityID, selectMovie }: Props) {
   const [movieGroups, movies, isLoading] = useMovies(cityID);
-  const [movieGroupID, setMovieGroupID] = useState();
+  const [movieGroupID, setMovieGroupID] = useState('');
 
   const onMovieGroupChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedID = e.target.value;
@@ -27,6 +27,7 @@ function MovieGroupSelector({ cityID, selectMovie }: Props) {
         {isLoading && <p>loading...</p>}
         {!isLoading && (
           <select name="movieGroupID" value={movieGroupID} onChange={onMovieGroupChange}>
+            <option hidden>Select a movie</option>
             {movieGroups.map(m => (
               <option key={m.id} value={m.id}>
                 {m.title}

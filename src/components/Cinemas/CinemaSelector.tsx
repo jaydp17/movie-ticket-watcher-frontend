@@ -22,6 +22,7 @@ function CinemaSelector({ cityID, selectCinema }: Props) {
       {isLoading && <p>loading...</p>}
       {!isLoading && (
         <select name="cinemaID" value={cinemaID} onChange={onCinemaChange}>
+          <option hidden>Select a Cinema</option>
           {cinemas.map(c => (
             <option key={c.id} value={c.id}>
               {c.name}
