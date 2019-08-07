@@ -6,7 +6,7 @@ interface Props {
   siteTitle: string;
 }
 
-const Header = ({ siteTitle }: Props) => (
+const Header = ({ siteTitle = `` }: Props) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -34,9 +34,5 @@ const Header = ({ siteTitle }: Props) => (
     </div>
   </header>
 );
-
-Header.defaultProps = {
-  siteTitle: ``,
-};
 
 export default Header;
