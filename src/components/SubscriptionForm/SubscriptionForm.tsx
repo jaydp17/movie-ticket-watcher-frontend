@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { toYYYY_MM_DD } from '../../helpers/date-helpers';
 import CinemaSelector from '../Cinemas';
 import CitySelector from '../Cities';
-import MovieSelector from '../Movies';
 import DatePicker from '../DatePicker';
-import { toYYYY_MM_DD } from '../../helpers/date-helpers';
+import MovieSelector from '../Movies';
+import { FormStatus } from './types';
+import useSubscribe from './useSubscribe';
 
 function SubscriptionForm() {
   const [cityID, setCityID] = useState('BANG');
@@ -11,18 +13,14 @@ function SubscriptionForm() {
   const [cinemaID, setCinemaID] = useState();
   const [date, setDate] = useState(() => toYYYY_MM_DD(new Date()));
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log({ cityID, movieID, cinemaID, date });
-  };
-
+  const [formStatus, onSubmitCallback] = useSubscribe({ cityID, movieID, cinemaID, date });
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmitCallback}>
       <CitySelector selectCity={setCityID} />
       <MovieSelector cityID={cityID} selectMovie={setMovieID} />
       <CinemaSelector cityID={cityID} selectCinema={setCinemaID} />
       <DatePicker selectDate={setDate} />
-      <input type="submit" value="Subscribe" />
+      <input type="submit" value="Subscribe" disabled={formStatus === FormStatus.submitting} />
     </form>
   );
 }

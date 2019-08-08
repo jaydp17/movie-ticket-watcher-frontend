@@ -9,7 +9,7 @@ export const isStaging = env === Environment.staging;
 export const isProd = env === Environment.production;
 
 export const serverBaseURL = (() => {
-  if (isDev) return 'http://localhost:3000';
+  if (isDev) return 'http://localhost:8010'; // this is the url for the local-cors-proxy
   if (isStaging) return 'https://staging-api.movie-ticket-watcher.jaydp.com';
   if (isProd) return 'https://api.movie-ticket-watcher.jaydp.com';
   throw new Error('Invalid NODE_ENV');
