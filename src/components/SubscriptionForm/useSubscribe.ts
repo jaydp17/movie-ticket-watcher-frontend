@@ -33,6 +33,13 @@ export default function useSubscribe({
       return;
     }
 
+    const workerReg = await navigator.serviceWorker.getRegistration();
+    if (!workerReg) {
+      alert('worker registration not found!');
+      return;
+    }
+    const subscription = await getSubscription(workerReg);
+
     fetch(`${serverBaseURL}/subscribe`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -40,7 +47,7 @@ export default function useSubscribe({
         cityID,
         movieID,
         cinemaID,
-        webPushSubscription: 'hello',
+        webPushSubscription: JSON.stringify(subscription),
         screeningDate: date,
       }),
     })
@@ -56,4 +63,32 @@ export default function useSubscribe({
   };
 
   return [formStatus, onSubmit];
+}
+
+async function getSubscription(workerReg: ServiceWorkerRegistration) {
+  const existingSubscription = await workerReg.pushManager.getSubscription();
+  if (existingSubscription) return existingSubscription;
+
+  const publicKey = process.env.GATSBY_VAPID_PUBLIC_KEY || '';
+  if (!publicKey) {
+    alert('vapid public key not found');
+    return;
+  }
+  const applicationServerKey = urlB64ToUint8Array(publicKey);
+  const options = { applicationServerKey, userVisibleOnly: true };
+  const subscription = await workerReg.pushManager.subscribe(options);
+  return subscription;
+}
+
+// urlB64ToUint8Array is a magic function that will encode the base64 public key
+// to Array buffer which is needed by the subscription option
+function urlB64ToUint8Array(base64String: string) {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+  const rawData = atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
 }
