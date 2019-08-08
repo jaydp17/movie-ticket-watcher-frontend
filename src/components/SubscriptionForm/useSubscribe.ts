@@ -16,14 +16,23 @@ export default function useSubscribe({
 }: Props): [FormStatus, (e: React.FormEvent<HTMLFormElement>) => void] {
   const [formStatus, setFormStatus] = useState(FormStatus.idle);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormStatus(FormStatus.submitting);
     console.log({ cityID, movieID, cinemaID, date });
     if (!cityID || !movieID || !cinemaID || !date) {
       alert('fill the damn form!');
+      setFormStatus(FormStatus.idle);
       return;
     }
-    setFormStatus(FormStatus.submitting);
+
+    const permission = await Notification.requestPermission();
+    if (permission !== 'granted') {
+      alert('Allow notification permission to subscribe!');
+      setFormStatus(FormStatus.idle);
+      return;
+    }
+
     fetch(`${serverBaseURL}/subscribe`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
