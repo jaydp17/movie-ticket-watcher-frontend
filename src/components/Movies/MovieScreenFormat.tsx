@@ -1,5 +1,15 @@
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormLabel from '@material-ui/core/FormLabel';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { IMovie } from './types';
+
+const RadioGroupWithSpace = styled(RadioGroup)`
+  justify-content: space-between;
+`;
 
 interface Props {
   selectedGroupMovies: IMovie[];
@@ -13,23 +23,32 @@ function MovieScreenFormat({ selectedGroupMovies, selectMovie }: Props) {
     selectMovie(selectedGroupMovies[0].id);
     return null;
   }
-  const onMovieIDChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedID = e.target.value;
+  const onMovieIDChange = (e: React.ChangeEvent<unknown>) => {
+    const selectedID = (e.target as HTMLInputElement).value;
     if (!selectedID) return;
     setMovieID(selectedID);
     selectMovie(selectedID);
   };
   return (
-    <fieldset>
-      <legend>Screen Format</legend>
-      <select name="movieID" value={movieID} onChange={onMovieIDChange}>
+    <FormControl component="div" fullWidth>
+      <FormLabel component="legend">Screen Format</FormLabel>
+      <RadioGroupWithSpace
+        aria-label="Screen Format"
+        name="screenFormat"
+        value={movieID}
+        onChange={onMovieIDChange}
+        row
+      >
         {selectedGroupMovies.map(m => (
-          <option key={m.id} value={m.id}>
-            {m.screenFormat}
-          </option>
+          <FormControlLabel
+            key={m.id}
+            value={m.id}
+            control={<Radio />}
+            label={`${m.screenFormat.toUpperCase()} - ${m.language}`}
+          />
         ))}
-      </select>
-    </fieldset>
+      </RadioGroupWithSpace>
+    </FormControl>
   );
 }
 
