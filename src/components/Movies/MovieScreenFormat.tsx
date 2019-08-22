@@ -1,6 +1,6 @@
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import React, { useState } from 'react';
@@ -31,7 +31,7 @@ function MovieScreenFormat({ selectedGroupMovies, selectMovie }: Props) {
   };
   return (
     <FormControl component="div" fullWidth>
-      <FormLabel component="legend">Screen Format</FormLabel>
+      <FormHelperText component="legend">Screen Format</FormHelperText>
       <RadioGroupWithSpace
         aria-label="Screen Format"
         name="screenFormat"
