@@ -1,4 +1,6 @@
+import Button from '@material-ui/core/Button';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { toYYYY_MM_DD } from '../../helpers/date-helpers';
 import CinemaSelector from '../Cinemas';
 import CitySelector from '../Cities';
@@ -6,6 +8,27 @@ import DatePicker from '../DatePicker';
 import MovieSelector from '../Movies';
 import { FormStatus } from './types';
 import useSubscribe from './useSubscribe';
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+
+  > button {
+    margin-top: 24px;
+    width: 100%;
+  }
+`;
+
+const SubscribeButton = styled(Button)`
+  max-width: 300px;
+  align-self: center;
+`;
 
 function SubscriptionForm() {
   const [cityID, setCityID] = useState('BANG');
@@ -15,13 +38,20 @@ function SubscriptionForm() {
 
   const [formStatus, onSubmitCallback] = useSubscribe({ cityID, movieID, cinemaID, date });
   return (
-    <form onSubmit={onSubmitCallback}>
+    <Form onSubmit={onSubmitCallback}>
       <CitySelector selectCity={setCityID} />
       <MovieSelector cityID={cityID} selectMovie={setMovieID} />
       <CinemaSelector cityID={cityID} selectCinema={setCinemaID} />
       <DatePicker selectDate={setDate} />
-      <input type="submit" value="Subscribe" disabled={formStatus === FormStatus.submitting} />
-    </form>
+      <SubscribeButton
+        variant="contained"
+        color="primary"
+        type="submit"
+        disabled={formStatus === FormStatus.submitting}
+      >
+        Subscribe
+      </SubscribeButton>
+    </Form>
   );
 }
 

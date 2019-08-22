@@ -1,9 +1,8 @@
 import MenuItem from '@material-ui/core/MenuItem';
-import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import DownshiftComponent, { DownshiftInterface } from 'downshift';
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import ScrollablePaper from '../shared/ScrollablePaper';
 import { ICity } from './types';
 import useCities from './useCities';
 
@@ -12,12 +11,6 @@ function getDownShift<T>() {
 }
 
 const Downshift = getDownShift<ICity>();
-
-const ScrollablePaper = styled(Paper)`
-  max-height: 200px;
-  overflow-y: auto;
-  overflow-x: hidden;
-`;
 
 interface Props {
   selectCity: (cityID: string) => void;

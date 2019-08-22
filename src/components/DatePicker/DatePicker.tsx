@@ -1,3 +1,4 @@
+import TextField from '@material-ui/core/TextField';
 import React, { useState } from 'react';
 import { toYYYY_MM_DD } from '../../helpers/date-helpers';
 
@@ -13,10 +14,16 @@ function DatePicker({ selectDate }: Props) {
     selectDate(yyyy_mm_dd);
   };
   return (
-    <fieldset>
-      <legend>Date</legend>
-      <input type="date" name="bday" value={date} onChange={onChange} />
-    </fieldset>
+    <TextField
+      id="date"
+      label="Screening Date"
+      type="date"
+      defaultValue={date}
+      onChange={onChange}
+      InputLabelProps={{
+        shrink: true,
+      }}
+    />
   );
 }
 
