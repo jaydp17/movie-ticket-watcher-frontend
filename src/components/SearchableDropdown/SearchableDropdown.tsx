@@ -11,6 +11,7 @@ interface Props<T> {
   initialSelectedItem?: T;
   onChange: (selectedID: string | null) => void;
   getFilterFn: (inputValue: string | null) => (item: T) => boolean;
+  isLoading?: boolean;
 }
 function SearchableDropdown<T extends { id: string }>({
   label,
@@ -19,6 +20,7 @@ function SearchableDropdown<T extends { id: string }>({
   initialSelectedItem,
   onChange,
   getFilterFn,
+  isLoading = false,
 }: Props<T>) {
   const Downshift = DownshiftComponent as DownshiftInterface<T>;
   return (
@@ -46,6 +48,7 @@ function SearchableDropdown<T extends { id: string }>({
               {renderInput({
                 fullWidth: true,
                 label,
+                disabled: isLoading,
                 InputLabelProps: getLabelProps(),
                 InputProps: { onBlur, onChange, onFocus },
                 inputProps,
@@ -53,25 +56,16 @@ function SearchableDropdown<T extends { id: string }>({
             </div>
             <ScrollablePaper {...getMenuProps()}>
               {isOpen
-                ? items
-                    .filter(
-                      filterFn,
-                      // item =>
-                      //   !inputValue ||
-                      //   itemToString(item)
-                      //     .toLowerCase()
-                      //     .includes(inputValue.toLowerCase()),
-                    )
-                    .map((item, index) =>
-                      renderItem({
-                        item,
-                        highlightedIndex,
-                        index,
-                        selectedItem,
-                        itemProps: getItemProps({ item }),
-                        itemToString,
-                      }),
-                    )
+                ? items.filter(filterFn).map((item, index) =>
+                    renderItem({
+                      item,
+                      highlightedIndex,
+                      index,
+                      selectedItem,
+                      itemProps: getItemProps({ item }),
+                      itemToString,
+                    }),
+                  )
                 : null}
             </ScrollablePaper>
           </div>

@@ -9,8 +9,6 @@ function CitySelector({ selectCity }: Props) {
   const [cities, isLoading] = useCities();
   const [cityID, setCityID] = useState('BANG');
 
-  if (isLoading) return <p>loading...</p>;
-
   const onCityChange = (selectedID: string | null) => {
     if (!selectedID) return;
     setCityID(selectedID);
@@ -19,6 +17,7 @@ function CitySelector({ selectCity }: Props) {
 
   return (
     <SearchableDropdown
+      isLoading={isLoading}
       label="City"
       initialSelectedItem={{ id: 'BANG', name: 'Bengaluru', isTopCity: true }}
       items={cities}

@@ -23,6 +23,7 @@ function MovieGroupSelector({ cityID, selectMovie }: Props) {
   return (
     <>
       <SearchableDropdown
+        isLoading={isLoading}
         label="Movie"
         items={movieGroups}
         itemToString={movieGroup => (movieGroup ? movieGroup.title : '')}

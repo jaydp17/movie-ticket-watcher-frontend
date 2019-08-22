@@ -18,6 +18,7 @@ function CinemaSelector({ cityID, selectCinema }: Props) {
 
   return (
     <SearchableDropdown
+      isLoading={isLoading}
       label="Cinema"
       items={cinemas}
       itemToString={cinema => (cinema ? cinema.name : '')}
