@@ -45,8 +45,9 @@ function SubscriptionForm() {
       <DatePicker selectDate={setDate} />
       <SubscribeButton
         variant="contained"
-        color="primary"
+        color="secondary"
         type="submit"
+        size="large"
         disabled={formStatus === FormStatus.submitting}
       >
         Subscribe

@@ -6,6 +6,8 @@
  */
 
 import Container from '@material-ui/core/Container';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
@@ -28,6 +30,13 @@ const FullHeightContainer = styled(Container)`
   flex: 1;
 `;
 
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#1D1033' },
+    secondary: { main: '#e53935' },
+  },
+});
+
 interface Props {
   children: any;
 }
@@ -43,13 +52,15 @@ const Layout = ({ children }: Props) => {
   `);
 
   return (
-    <Root>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <FullHeightContainer maxWidth="sm">
-        <Main>{children}</Main>
-      </FullHeightContainer>
-      <Footer />
-    </Root>
+    <ThemeProvider theme={theme}>
+      <Root>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <FullHeightContainer maxWidth="sm">
+          <Main>{children}</Main>
+        </FullHeightContainer>
+        <Footer />
+      </Root>
+    </ThemeProvider>
   );
 };
 
