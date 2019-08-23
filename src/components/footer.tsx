@@ -71,7 +71,6 @@ function Footer() {
       }
     }
   `);
-  console.log('data', data);
   return (
     <FooterSection>
       <Container maxWidth="sm">

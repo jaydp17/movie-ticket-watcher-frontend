@@ -54,6 +54,7 @@ export default function useSubscribe({
       .then(res => res.json())
       .then(body => {
         setFormStatus(FormStatus.success);
+        setTimeout(() => setFormStatus(FormStatus.idle), 3000);
         console.log('response body', body);
       })
       .catch(err => {

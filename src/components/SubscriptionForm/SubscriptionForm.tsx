@@ -1,4 +1,5 @@
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { toYYYY_MM_DD } from '../../helpers/date-helpers';
@@ -28,6 +29,14 @@ const Form = styled.form`
 const SubscribeButton = styled(Button)`
   max-width: 300px;
   align-self: center;
+  && {
+    background-color: ${(props: { formStatus: FormStatus }) =>
+      props.formStatus === FormStatus.success ? '#4caf50' : null};
+  }
+`;
+
+const ProgressBar = styled(CircularProgress)`
+  margin-left: 24px;
 `;
 
 function SubscriptionForm() {
@@ -48,9 +57,11 @@ function SubscriptionForm() {
         color="secondary"
         type="submit"
         size="large"
+        formStatus={formStatus}
         disabled={formStatus === FormStatus.submitting}
       >
         Subscribe
+        {formStatus === FormStatus.submitting && <ProgressBar size={24} />}
       </SubscribeButton>
     </Form>
   );
