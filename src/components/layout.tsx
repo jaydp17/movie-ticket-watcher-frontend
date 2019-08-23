@@ -32,7 +32,7 @@ const FullHeightContainer = styled(Container)`
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: '#1D1033' },
+    primary: { main: '#263238' },
     secondary: { main: '#e53935' },
   },
 });

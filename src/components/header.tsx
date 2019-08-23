@@ -11,6 +11,11 @@ const FlexGrow = styled.div`
   flex-grow: 1;
 `;
 
+const TitleLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+`;
+
 interface Props {
   siteTitle: string;
 }
@@ -24,20 +29,30 @@ const Header = ({ siteTitle }: Props) => {
           }
         }
       }
+      logo: file(relativePath: { eq: "tickets.png" }) {
+        childImageSharp {
+          fixed(width: 24) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `);
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6">{siteTitle}</Typography>
+        <a href="/">
+          <IconButton edge="start" aria-label="logo" aria-haspopup="true" color="inherit">
+            <GatsbyImg fixed={data.logo.childImageSharp.fixed} />
+          </IconButton>
+        </a>
+        <Typography variant="h6">
+          <TitleLink href="/">{siteTitle}</TitleLink>
+        </Typography>
+
         <FlexGrow />
         <a href="https://github.com/jaydp17/bms-notify-frontend" target="_blank">
-          <IconButton
-            edge="end"
-            aria-label="account of current user"
-            aria-haspopup="true"
-            color="inherit"
-          >
+          <IconButton edge="end" aria-label="github logo" aria-haspopup="true" color="inherit">
             <GatsbyImg fixed={data.githubIcon.childImageSharp.fixed} />
           </IconButton>
         </a>
