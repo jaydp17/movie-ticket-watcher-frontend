@@ -10,9 +10,9 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 interface Props {
-  description: string;
-  lang: string;
-  meta: any[];
+  description?: string;
+  lang?: string;
+  meta?: any[];
   title: string;
 }
 
