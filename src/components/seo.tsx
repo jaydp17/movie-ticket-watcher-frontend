@@ -62,6 +62,10 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
           content: `summary`,
         },
         {
+          name: `twitter:image`,
+          content: `/logo-512px.png`,
+        },
+        {
           name: `twitter:creator`,
           content: site.siteMetadata.author,
         },
