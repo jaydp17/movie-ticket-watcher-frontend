@@ -60,7 +60,7 @@ function SubscriptionForm() {
         formStatus={formStatus}
         disabled={formStatus === FormStatus.submitting}
       >
-        Subscribe
+        {formStatus === FormStatus.success ? 'Subscribed' : 'Subscribe'}
         {formStatus === FormStatus.submitting && <ProgressBar size={24} />}
       </SubscribeButton>
     </Form>
