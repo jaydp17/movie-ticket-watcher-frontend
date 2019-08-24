@@ -13,9 +13,10 @@ interface Props {
   description?: string;
   lang?: string;
   meta?: any[];
+  title?: string;
 }
 
-function SEO({ description = '', lang = 'en', meta = [] }: Props) {
+function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -31,13 +32,14 @@ function SEO({ description = '', lang = 'en', meta = [] }: Props) {
   );
 
   const metaDescription = description || site.siteMetadata.description;
+  const metaTitle = title || site.siteMetadata.title;
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={site.siteMetadata.title}
+      title={metaTitle}
       meta={[
         {
           name: `description`,
@@ -45,7 +47,7 @@ function SEO({ description = '', lang = 'en', meta = [] }: Props) {
         },
         {
           property: `og:title`,
-          content: site.siteMetadata.title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -65,7 +67,7 @@ function SEO({ description = '', lang = 'en', meta = [] }: Props) {
         },
         {
           name: `twitter:title`,
-          content: site.siteMetadata.title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
