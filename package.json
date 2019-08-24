@@ -1,6 +1,6 @@
 {
   "name": "movie-ticket-watcher-frontend",
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A Gatsby frontend written in TypeScript to interact with Movie Ticket Watcher",
   "version": "0.1.0",
   "author": "Jaydeep Solanki <jaydp17@gmail.com> (https://jaydp.com)",
   "bugs": {
