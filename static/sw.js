@@ -9,3 +9,10 @@ self.addEventListener('push', e => {
     actions: data.actions,
   });
 });
+
+self.addEventListener('notificationclick', event => {
+  console.log('closing notification');
+  const clickedNotification = event.notification;
+  clickedNotification.close();
+  console.log('closed');
+});
