@@ -37,8 +37,8 @@ module.exports = {
         name: `Movie ticket watcher`,
         short_name: `Movie ticket watcher`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#263238`,
+        theme_color: `#263238`,
         display: `minimal-ui`,
         icon: `src/images/tickets.svg`, // This path is relative to the root of the site.
       },
