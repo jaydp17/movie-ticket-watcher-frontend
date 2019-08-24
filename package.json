@@ -1,46 +1,57 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
+  "name": "bms-notify-frontend",
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jaydeep Solanki <jaydp17@gmail.com> (https://jaydp.com)",
+  "bugs": {
+    "url": "https://github.com/jaydp17/bms-notify-frontend/issues"
+  },
   "dependencies": {
-    "apollo-boost": "^0.3.1",
-    "gatsby": "^2.3.22",
-    "gatsby-image": "^2.0.38",
-    "gatsby-plugin-manifest": "^2.0.29",
-    "gatsby-plugin-react-helmet": "^3.0.12",
-    "gatsby-plugin-sharp": "^2.0.34",
-    "gatsby-source-filesystem": "^2.0.29",
-    "gatsby-source-graphql": "^2.0.18",
-    "gatsby-transformer-sharp": "^2.1.18",
-    "isomorphic-fetch": "^2.2.1",
+    "@material-ui/core": "^4.3.3",
+    "babel-plugin-styled-components": "^1.10.6",
+    "downshift": "^3.2.12",
+    "gatsby": "^2.13.51",
+    "gatsby-image": "^2.2.8",
+    "gatsby-plugin-manifest": "^2.2.4",
+    "gatsby-plugin-offline": "^2.2.4",
+    "gatsby-plugin-react-helmet": "^3.1.3",
+    "gatsby-plugin-sharp": "^2.2.9",
+    "gatsby-plugin-styled-components": "^3.1.2",
+    "gatsby-plugin-typescript": "^2.1.2",
+    "gatsby-source-filesystem": "^2.1.8",
+    "gatsby-transformer-sharp": "^2.2.5",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-apollo": "^2.5.4",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
-    "prettier": "^1.17.0"
+    "@types/node": "^12.6.9",
+    "@types/react": "^16.8.24",
+    "@types/react-dom": "^16.8.5",
+    "@types/react-helmet": "^5.0.9",
+    "@types/styled-components": "^4.1.18",
+    "prettier": "^1.18.2",
+    "typescript": "^3.5.3"
   },
+  "homepage": "https://github.com/jaydp17/bms-notify-frontend#readme",
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop --port 3000",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "git+https://github.com/jaydp17/bms-notify-frontend.git"
   },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write src/**/*.{ts,tsx,js,jsx,md}",
+    "serve": "gatsby serve",
+    "start": "npm run develop",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "type-check": "tsc --noEmit"
   }
 }
