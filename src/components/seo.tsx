@@ -13,10 +13,9 @@ interface Props {
   description?: string;
   lang?: string;
   meta?: any[];
-  title: string;
 }
 
-function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
+function SEO({ description = '', lang = 'en', meta = [] }: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -38,8 +37,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={site.siteMetadata.title}
       meta={[
         {
           name: `description`,
@@ -47,7 +45,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: site.siteMetadata.title,
         },
         {
           property: `og:description`,
@@ -67,7 +65,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: site.siteMetadata.title,
         },
         {
           name: `twitter:description`,

@@ -5,7 +5,7 @@ import SubscriptionForm from '../components/SubscriptionForm';
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO />
     <h1>Hello</h1>
     <p>Select the city/movie/cinema &amp; the date for which you want to be notified</p>
     <p>Hit Subscribe &amp; Allow Notifications!</p>
