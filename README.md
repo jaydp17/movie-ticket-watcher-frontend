@@ -21,7 +21,7 @@ A simple [Gatsby](https://www.gatsbyjs.org) project to interact with the [Movie 
 2.  **Run it**
 
     ```sh
-    gatsby develop
+    yarn develop
     ```
 
     Your site is now running at `http://localhost:8000`!
