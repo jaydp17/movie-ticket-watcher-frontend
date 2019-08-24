@@ -46,6 +46,10 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
           content: metaDescription,
         },
         {
+          property: `og:url`,
+          content: process.env.GATSBY_PUBLIC_URL,
+        },
+        {
           property: `og:title`,
           content: metaTitle,
         },
@@ -56,6 +60,10 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:image`,
+          content: `${process.env.GATSBY_PUBLIC_URL}/logo-512px.png`,
         },
         {
           name: `twitter:card`,
