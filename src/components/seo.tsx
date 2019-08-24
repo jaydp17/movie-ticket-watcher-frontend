@@ -63,7 +63,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
         },
         {
           property: `og:image`,
-          content: `${process.env.GATSBY_PUBLIC_URL}/logo-512px.png`,
+          content: `${process.env.GATSBY_PUBLIC_URL}/og-image.png`,
         },
         {
           name: `twitter:card`,
@@ -71,7 +71,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
         },
         {
           name: `twitter:image`,
-          content: `${process.env.GATSBY_PUBLIC_URL}/logo-512px.png`,
+          content: `${process.env.GATSBY_PUBLIC_URL}/twitter-512px.png`,
         },
         {
           name: `twitter:creator`,
