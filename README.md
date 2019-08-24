@@ -14,7 +14,7 @@ A simple [Gatsby](https://www.gatsbyjs.org) project to interact with the [Movie 
 1.  **Install dependencies**
 
     ```sh
-    cd bms-notify-frontend/
+    cd movie-ticket-watcher-frontend/
     yarn
     ```
 

@@ -1,10 +1,10 @@
 {
-  "name": "bms-notify-frontend",
+  "name": "movie-ticket-watcher-frontend",
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
   "author": "Jaydeep Solanki <jaydp17@gmail.com> (https://jaydp.com)",
   "bugs": {
-    "url": "https://github.com/jaydp17/bms-notify-frontend/issues"
+    "url": "https://github.com/jaydp17/movie-ticket-watcher-frontend/issues"
   },
   "dependencies": {
     "@material-ui/core": "^4.3.3",
@@ -35,7 +35,7 @@
     "prettier": "^1.18.2",
     "typescript": "^3.5.3"
   },
-  "homepage": "https://github.com/jaydp17/bms-notify-frontend#readme",
+  "homepage": "https://github.com/jaydp17/movie-ticket-watcher-frontend#readme",
   "keywords": [
     "gatsby"
   ],
@@ -43,7 +43,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaydp17/bms-notify-frontend.git"
+    "url": "git+https://github.com/jaydp17/movie-ticket-watcher-frontend.git"
   },
   "scripts": {
     "build": "gatsby build",

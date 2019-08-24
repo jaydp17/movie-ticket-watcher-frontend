@@ -51,7 +51,7 @@ const Header = ({ siteTitle }: Props) => {
         </Typography>
 
         <FlexGrow />
-        <a href="https://github.com/jaydp17/bms-notify-frontend" target="_blank">
+        <a href="https://github.com/jaydp17/movie-ticket-watcher-frontend" target="_blank">
           <IconButton edge="end" aria-label="github logo" aria-haspopup="true" color="inherit">
             <GatsbyImg fixed={data.githubIcon.childImageSharp.fixed} />
           </IconButton>
