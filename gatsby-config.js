@@ -6,6 +6,15 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+    'gatsby-plugin-styled-components',
+    {
       resolve: `gatsby-plugin-typescript`,
       options: {
         isTSX: true, // defaults to false
@@ -33,9 +42,6 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/tickets.svg`, // This path is relative to the root of the site.
       },
-    },
-    {
-      resolve: 'gatsby-plugin-styled-components',
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
