@@ -63,7 +63,7 @@ function SEO({ description = '', lang = 'en', meta = [], title }: Props) {
         },
         {
           name: `twitter:image`,
-          content: `/logo-512px.png`,
+          content: `${process.env.GATSBY_PUBLIC_URL}/logo-512px.png`,
         },
         {
           name: `twitter:creator`,
