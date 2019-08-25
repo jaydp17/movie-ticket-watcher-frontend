@@ -40,13 +40,7 @@ module.exports = {
         background_color: `#263238`,
         theme_color: `#263238`,
         display: `standalone`,
-        icon: `static/pwa-icon-512px.png`, // This path is relative to the root of the site.
-        icon_options: {
-          // For all the options available, please see:
-          // https://developer.mozilla.org/en-US/docs/Web/Manifest
-          // https://w3c.github.io/manifest/#purpose-member
-          purpose: `maskable`,
-        },
+        icon: `src/images/tickets.svg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
